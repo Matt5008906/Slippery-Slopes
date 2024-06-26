@@ -21,7 +21,6 @@ public class CollisionHandler : MonoBehaviour
             audioSource = gameObject.AddComponent<AudioSource>(); 
         }
 
-        // Assign death sound clip to AudioSource
         audioSource.clip = deathSound;
 
     }
