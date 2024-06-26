@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SnowBallController : MonoBehaviour
 {
-    public GameObject Player; // Reference to the player with capital "P"
-    public float FollowSpeed = 1.5f; // Speed multiplier for the snowball relative to the player
-    public float MaxSpeedMultiplier = 2f; // Maximum speed multiplier based on player's speed
-    public float MinSpeedMultiplier = 0.5f; // Minimum speed multiplier based on player's speed
+    public GameObject Player; 
+    public float FollowSpeed = 35f; 
+    public float MaxSpeedMultiplier = 3f; 
+    public float MinSpeedMultiplier = 1f; 
     public ParticleSystem SnowParticles;
-    public AudioClip move; // Audio clip to play for movement
+    public AudioClip move; 
     private Rigidbody2D rb;
     private Vector2 playerPosition;
-    private AudioSource audioSource; // Reference to the AudioSource component
+    private AudioSource audioSource; 
     private Vector2 direction;
 
     void Start()
@@ -21,11 +21,9 @@ public class SnowBallController : MonoBehaviour
         playerPosition = Player.transform.position;
         direction = (playerPosition - (Vector2)transform.position).normalized;
 
-        // Get the AudioSource component attached to this GameObject
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
-            // Add an AudioSource component if one doesn't exist
             audioSource = gameObject.AddComponent<AudioSource>();
         }
 
@@ -60,7 +58,7 @@ public class SnowBallController : MonoBehaviour
         float speedMultiplier = Mathf.Lerp(MinSpeedMultiplier, MaxSpeedMultiplier, playerSpeed / FollowSpeed);
 
         var emission = SnowParticles.emission;
-        emission.rateOverTime = 100f * speedMultiplier; // Adjust particle emission rate based on speed
+        emission.rateOverTime = 100f * speedMultiplier; 
     }
 
     void AdjustAudioVolume()
